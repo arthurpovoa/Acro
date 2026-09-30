@@ -16,17 +16,18 @@
 <style>
 /* ============================================================
    UNO DESIGN — sistema visual
-   Diretriz: fundo off-white #F7F5F2 ou branco, texto #111111,
-   sem sombras e tipografia com muito respiro (corpo 16–18px).
-   O azul do logotipo (#9DBBD3) aparece apenas sobre fotografia.
+   Diretriz: fundo off-white #F7F5F2 ou branco e sem sombras.
+   Letras no tamanho e na cor do site original: texto no azul-tinta
+   do logotipo (#22364B), corpo em 16px. O azul claro (#9DBBD3)
+   aparece apenas sobre fotografia.
    ============================================================ */
 :root{
   --papel:#F7F5F2;
   --branco:#FFFFFF;
-  --tinta:#111111;
-  --tinta-60:rgba(17,17,17,.64);
+  --tinta:#22364B;
+  --tinta-60:rgba(34,54,75,.62);
   --azul:#9DBBD3;
-  --linha:rgba(17,17,17,.12);
+  --linha:rgba(34,54,75,.16);
   --sans:'Jost','Futura','Century Gothic',system-ui,sans-serif;
   --serif:'Newsreader','Iowan Old Style',Georgia,serif;
   --gut:clamp(20px,5vw,64px);
@@ -37,16 +38,16 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--papel);color:var(--tinta);
   font-family:var(--serif);font-weight:300;
-  font-size:clamp(1rem,.955rem + .2vw,1.125rem);line-height:1.78;
+  font-size:1rem;line-height:1.72;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 img{max-width:100%;display:block}
 h1,h2,h3,h4{font-family:var(--sans);margin:0;font-weight:300}
-h1{font-size:clamp(2.35rem,1.35rem + 3.7vw,4.7rem);line-height:1.03;letter-spacing:-.028em}
-h2{font-size:clamp(1.95rem,1.3rem + 2.2vw,3.15rem);line-height:1.1;letter-spacing:-.022em}
-h3{font-size:clamp(1.3rem,1.1rem + .85vw,1.75rem);line-height:1.18;letter-spacing:-.012em;font-weight:400}
+h1{font-size:2rem;line-height:1.03;letter-spacing:-.028em}
+h2{font-size:1.5rem;line-height:1.1;letter-spacing:-.022em}
+h3{font-size:1.17em;line-height:1.18;letter-spacing:-.012em;font-weight:400}
 h4{font-size:1.06rem;font-weight:400;letter-spacing:-.005em}
-p{margin:0 0 1.25em}
+p{margin:0 0 1.1em}
 p:last-child{margin-bottom:0}
 a{color:inherit}
 ::selection{background:var(--azul);color:var(--tinta)}
@@ -62,7 +63,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .pular:focus{left:12px;top:12px}
 
 /* ---------- seções pendentes ----------
-   05 (fundador) e 06 (equipe) só vão ao ar com nomes reais e CAU.
+   06 (equipe) só vai ao ar com os nomes reais.
    Para publicar: preencha os campos entre [ ] e apague a regra abaixo. */
 [data-pendente]{display:none !important}
 
@@ -77,7 +78,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .btn--claro{background:var(--papel);color:var(--tinta)}
 .btn--claro:hover{background:var(--branco)}
 .btn--escuro{background:var(--tinta);color:var(--papel)}
-.btn--escuro:hover{background:#2B2B2B}
+.btn--escuro:hover{background:#132434}
 .btn--contorno{border-color:currentColor;color:inherit}
 .btn--contorno:hover{background:rgba(157,187,211,.16)}
 .btn svg{width:17px;height:17px;flex:none}
@@ -119,7 +120,7 @@ section[id],[id].proc{scroll-margin-top:80px}
              linear-gradient(to bottom,rgba(13,25,38,.66),rgba(13,25,38,0) 22%);}
 .hero__inner{position:relative;color:var(--papel);padding-top:150px;padding-bottom:clamp(52px,8vh,104px)}
 .hero__local{font-family:var(--sans);font-size:.88rem;letter-spacing:.15em;color:var(--azul);margin:0 0 26px;opacity:0;animation:sobe .9s .15s cubic-bezier(.2,.7,.25,1) forwards}
-.hero h1{font-size:clamp(2.05rem,1.2rem + 2.4vw,3.5rem);line-height:1.08;color:var(--papel)}
+.hero h1{font-size:2rem;line-height:1.03;color:var(--papel)}
 .hero h1 .l{display:block;overflow:hidden}
 .hero h1 .l>span{display:block;text-wrap:balance;transform:translateY(105%);animation:linha 1.15s cubic-bezier(.19,.9,.22,1) forwards}
 .hero h1 .l:nth-child(1)>span{animation-delay:.2s}
@@ -138,7 +139,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 /* ---------- abertura do portfólio ---------- */
 .manif{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,3vw,48px)}
 .manif__nota{grid-column:1/4;border-top:1px solid var(--linha);padding-top:16px}
-.manif__txt{grid-column:5/12;font-size:clamp(1.3rem,.95rem + 1.5vw,2.05rem);line-height:1.45;font-weight:300;letter-spacing:-.012em}
+.manif__txt{grid-column:5/12;font-size:1rem;line-height:1.45;font-weight:300;letter-spacing:-.012em}
 .manif__txt span{display:block;margin-bottom:.35em}
 
 /* ---------- portfólio ---------- */
@@ -151,7 +152,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .galeria>*:nth-child(2){grid-column:8/13}
 .galeria>*:nth-child(3){grid-column:8/13}
 .galeria>*:nth-child(4){grid-column:1/13}
-.cartao{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:#E9E6E1;font:inherit;
+.cartao{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:#E9E6E1;font-family:inherit;font-weight:inherit;
   cursor:pointer;overflow:hidden;text-align:left;color:var(--papel)}
 .cartao img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.25,1)}
 .cartao::after{content:"";position:absolute;inset:0;pointer-events:none;
@@ -181,14 +182,14 @@ section[id],[id].proc{scroll-margin-top:80px}
 .servicos{list-style:none;margin:44px 0 0;padding:0;display:grid;gap:0}
 .servicos li{border-top:1px solid var(--linha);padding:18px 0;display:grid;grid-template-columns:minmax(150px,.7fr) 1fr;gap:16px;align-items:baseline}
 .servicos b{font-family:var(--sans);font-weight:400;font-size:1.02rem}
-.servicos span{font-size:1rem;color:var(--tinta-60)}
+.servicos span{font-size:.96rem;color:var(--tinta-60)}
 .proc{margin-top:clamp(72px,9vw,128px)}
 .proc__nota{margin:0 0 22px}
 .processo{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.6vw,40px)}
 .passo{border-top:1px solid var(--linha);padding-top:18px}
 .passo i{font-family:var(--sans);font-style:normal;font-size:.84rem;color:var(--tinta-60);letter-spacing:.06em}
 .passo h4{margin:10px 0 8px}
-.passo p{font-size:1rem;color:var(--tinta-60)}
+.passo p{font-size:.94rem;color:var(--tinta-60)}
 
 /* ---------- fundador ---------- */
 .bruno{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(30px,4.5vw,76px);align-items:center}
@@ -213,7 +214,7 @@ section[id],[id].proc{scroll-margin-top:80px}
   font-family:var(--sans);font-size:1.02rem;letter-spacing:.1em;color:var(--tinta-60);margin-bottom:26px}
 .membro h4{margin-bottom:4px}
 .membro__papel{font-family:var(--sans);font-size:.85rem;color:var(--tinta-60);margin:0 0 12px}
-.membro p{font-size:1rem;color:var(--tinta-60)}
+.membro p{font-size:.95rem;color:var(--tinta-60)}
 
 /* ---------- contato ---------- */
 .contato{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(34px,5vw,86px)}
@@ -230,7 +231,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .campo--full{grid-column:1/-1}
 .campo label{font-family:var(--sans);font-size:.84rem;color:var(--tinta-60)}
 .campo input,.campo select,.campo textarea{
-  background:transparent;border:0;border-bottom:1px solid rgba(17,17,17,.24);border-radius:0;
+  background:transparent;border:0;border-bottom:1px solid rgba(34,54,75,.28);border-radius:0;
   color:var(--tinta);font-family:var(--sans);font-size:1rem;padding:10px 0;transition:border-color .35s ease;
 }
 .campo textarea{resize:vertical;min-height:74px;line-height:1.5}
@@ -238,7 +239,7 @@ section[id],[id].proc{scroll-margin-top:80px}
   background-position:calc(100% - 12px) 20px,calc(100% - 7px) 20px;background-size:5px 5px;background-repeat:no-repeat;padding-right:28px}
 .campo select option{background:var(--branco);color:var(--tinta)}
 .campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-bottom-color:var(--tinta)}
-.campo input::placeholder,.campo textarea::placeholder{color:rgba(17,17,17,.36)}
+.campo input::placeholder,.campo textarea::placeholder{color:rgba(34,54,75,.4)}
 .form__envio{grid-column:1/-1;display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:6px}
 .form__nota{font-family:var(--sans);font-size:.82rem;color:var(--tinta-60);max-width:34ch;margin:0}
 .form__ok{grid-column:1/-1;font-family:var(--sans);font-size:.9rem;color:var(--tinta);margin:0}
@@ -247,7 +248,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .rodape{background:var(--papel);color:var(--tinta-60);border-top:1px solid var(--linha);padding-block:64px 34px}
 .rodape__grade{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(28px,4vw,60px);align-items:start}
 .rodape img{height:36px;width:auto;margin-bottom:20px}
-.rodape p{font-size:1rem;max-width:36ch}
+.rodape p{font-size:.96rem;max-width:36ch}
 .rodape h4{font-family:var(--sans);font-size:.84rem;color:var(--tinta-60);font-weight:400;margin-bottom:16px}
 .rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .rodape ul a{font-family:var(--sans);font-size:.96rem;text-decoration:none;color:var(--tinta);border-bottom:1px solid transparent;transition:border-color .35s ease}
@@ -262,7 +263,7 @@ section[id],[id].proc{scroll-margin-top:80px}
   transition:background-color .4s ease,transform .4s ease,gap .4s ease,padding .4s ease}
 .zap svg{width:26px;height:26px;fill:currentColor;flex:none}
 .zap span{font-family:var(--sans);font-size:.9rem;max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .5s cubic-bezier(.2,.7,.25,1)}
-.zap:hover{background:#2B2B2B;gap:10px;padding-right:24px}
+.zap:hover{background:#132434;gap:10px;padding-right:24px}
 .zap:hover span{max-width:160px}
 
 /* ---------- modal de projeto ---------- */
@@ -283,7 +284,7 @@ section[id],[id].proc{scroll-margin-top:80px}
 .modal__seta--prox{right:0}
 .modal__conta{position:absolute;left:0;bottom:-30px;font-family:var(--sans);font-size:.84rem;color:var(--tinta-60)}
 .modal__texto{color:var(--tinta);min-width:0}
-.modal__texto h3{margin-bottom:8px;font-size:clamp(1.5rem,1.1rem + 1.1vw,2.1rem)}
+.modal__texto h3{margin-bottom:8px;font-size:1.17em}
 .modal__local{font-family:var(--sans);font-size:.9rem;color:var(--tinta-60);margin:0 0 22px}
 .modal__texto p{font-size:1rem}
 .ficha{list-style:none;margin:28px 0 32px;padding:0}
@@ -370,7 +371,7 @@ body.travado{overflow:hidden}
       <a href="#portfolio">Portfólio</a>
       <a href="#escritorio">O escritório</a>
       <a href="#processo">Processo</a>
-      <a href="#bruno" data-pendente>Bruno</a>
+      <a href="#bruno">Bruno</a>
       <a href="#equipe" data-pendente>Equipe</a>
       <a href="#contato">Contato</a>
       <a class="btn btn--contorno" href="https://wa.me/5561981408629?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20UNO%20Design%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">
@@ -389,7 +390,7 @@ body.travado{overflow:hidden}
     <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#escritorio">O escritório</a></li>
     <li><a href="#processo">Processo</a></li>
-    <li data-pendente><a href="#bruno">Bruno</a></li>
+    <li><a href="#bruno">Bruno</a></li>
     <li data-pendente><a href="#equipe">Equipe</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
@@ -487,11 +488,10 @@ body.travado{overflow:hidden}
   </div>
 </section>
 
-<!-- ======================= 05 · FUNDADOR — PENDENTE =======================
-     Não publicar sem o nome completo e o CAU de Bruno.
-     Para publicar: preencha os campos entre [ ], troque o placeholder pela foto
-     e apague a regra [data-pendente] no CSS (libera esta seção, a 06 e os links do menu). -->
-<section class="faixa branco" id="bruno" data-pendente>
+<!-- ======================= 05 · FUNDADOR =======================
+     Pendente: retrato de Bruno (substituir o bloco .ph por <img>),
+     nome completo no título e número do CAU ao lado do cargo. -->
+<section class="faixa branco" id="bruno">
   <div class="container bruno">
     <figure class="bruno__foto rev">
       <div class="ph" role="img" aria-label="Espaço reservado para a foto de Bruno">
@@ -504,8 +504,8 @@ body.travado{overflow:hidden}
       <figcaption>Espaço reservado para o retrato oficial de Bruno.</figcaption>
     </figure>
     <div class="bruno__txt rev" data-atraso="1">
-      <h2>[Nome completo de Bruno]</h2>
-      <p class="bruno__papel">Arquiteto responsável e fundador · CAU [número]</p>
+      <h2>Bruno</h2>
+      <p class="bruno__papel">Arquiteto responsável e fundador</p>
       <p>Bruno conduz pessoalmente cada estudo preliminar. Visita o terreno, escuta a família e desenha as primeiras plantas. E volta ao canteiro durante a obra para garantir que o detalhe desenhado seja o detalhe executado.</p>
       <p>Assinatura de volumes limpos, concreto aparente e madeira, aberturas generosas que puxam o jardim para dentro e uma atenção contínua à proporção. Nada de excesso decorativo. A casa se sustenta pela luz, pela matéria e pelo vazio entre as coisas.</p>
       <p>Para ele, um bom projeto se mede anos depois. Na conta de energia. Na manutenção baixa. Na sensação de que a casa segue confortável quando a rotina muda.</p>
@@ -628,7 +628,7 @@ body.travado{overflow:hidden}
           <li><a href="#portfolio">Portfólio</a></li>
           <li><a href="#escritorio">O escritório</a></li>
           <li><a href="#processo">Processo</a></li>
-          <li data-pendente><a href="#bruno">Bruno</a></li>
+          <li><a href="#bruno">Bruno</a></li>
           <li data-pendente><a href="#equipe">Equipe</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>

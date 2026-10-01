@@ -62,9 +62,9 @@ section[id],[id].proc{scroll-margin-top:80px}
 .pular{position:absolute;left:-9999px;top:0;background:var(--papel);color:var(--tinta);padding:12px 18px;z-index:200}
 .pular:focus{left:12px;top:12px}
 
-/* ---------- seções pendentes ----------
-   06 (equipe) só vai ao ar com os nomes reais.
-   Para publicar: preencha os campos entre [ ] e apague a regra abaixo. */
+/* ---------- seções fora do site ----------
+   05 (Bruno) e 06 (Equipe) estão ocultas, junto com os links do menu.
+   Para voltar com elas: apague a regra abaixo. */
 [data-pendente]{display:none !important}
 
 /* ---------- botões ---------- */
@@ -371,7 +371,7 @@ body.travado{overflow:hidden}
       <a href="#portfolio">Portfólio</a>
       <a href="#escritorio">O escritório</a>
       <a href="#processo">Processo</a>
-      <a href="#bruno">Bruno</a>
+      <a href="#bruno" data-pendente>Bruno</a>
       <a href="#equipe" data-pendente>Equipe</a>
       <a href="#contato">Contato</a>
       <a class="btn btn--contorno" href="https://wa.me/5561981408629?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20UNO%20Design%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">
@@ -390,7 +390,7 @@ body.travado{overflow:hidden}
     <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#escritorio">O escritório</a></li>
     <li><a href="#processo">Processo</a></li>
-    <li><a href="#bruno">Bruno</a></li>
+    <li data-pendente><a href="#bruno">Bruno</a></li>
     <li data-pendente><a href="#equipe">Equipe</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
@@ -488,10 +488,10 @@ body.travado{overflow:hidden}
   </div>
 </section>
 
-<!-- ======================= 05 · FUNDADOR =======================
-     Pendente: retrato de Bruno (substituir o bloco .ph por <img>),
-     nome completo no título e número do CAU ao lado do cargo. -->
-<section class="faixa branco" id="bruno">
+<!-- ======================= 05 · FUNDADOR — OCULTA =======================
+     Fora do site por enquanto. Pendente: retrato de Bruno (substituir o
+     bloco .ph por <img>), nome completo no título e CAU ao lado do cargo. -->
+<section class="faixa branco" id="bruno" data-pendente>
   <div class="container bruno">
     <figure class="bruno__foto rev">
       <div class="ph" role="img" aria-label="Foto de Bruno, a completar">
@@ -512,8 +512,8 @@ body.travado{overflow:hidden}
   </div>
 </section>
 
-<!-- ======================= 06 · EQUIPE — PENDENTE =======================
-     Não publicar sem os nomes reais. Preencha os campos entre [ ]. -->
+<!-- ======================= 06 · EQUIPE — OCULTA =======================
+     Fora do site por enquanto. Pendente: nomes reais nos campos entre [ ]. -->
 <section class="faixa" id="equipe" data-pendente>
   <div class="container">
     <div class="eq__topo rev">
@@ -627,7 +627,7 @@ body.travado{overflow:hidden}
           <li><a href="#portfolio">Portfólio</a></li>
           <li><a href="#escritorio">O escritório</a></li>
           <li><a href="#processo">Processo</a></li>
-          <li><a href="#bruno">Bruno</a></li>
+          <li data-pendente><a href="#bruno">Bruno</a></li>
           <li data-pendente><a href="#equipe">Equipe</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>

@@ -167,13 +167,14 @@ function initHeader() {
   if (!('IntersectionObserver' in window)) return;
   const links = $$('.nav__list a');
   const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+  // Marca a seção que está no centro da tela; no hero, nenhuma
+  const active = new Set();
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const link = map.get(entry.target.id);
-      if (link && entry.isIntersecting) {
-        links.forEach((l) => l.classList.toggle('is-current', l === link));
-      }
+      if (entry.isIntersecting) active.add(entry.target.id); else active.delete(entry.target.id);
     });
+    const current = [...map.keys()].find((id) => active.has(id));
+    links.forEach((l) => l.classList.toggle('is-current', l === map.get(current)));
   }, { rootMargin: '-45% 0px -50% 0px' });
   map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
 }

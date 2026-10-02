@@ -6,11 +6,11 @@
   <title>Arquitetura e Interiores em Goiânia | Sá | Spessatto</title>
   <meta name="description" content="Escritório de arquitetura e interiores no Setor Bueno, em Goiânia. Projetos residenciais, corporativos, de lojas, decorados e mostras, do primeiro estudo à entrega da obra.">
   <link rel="canonical" href="https://saspessatto.com/">
-  <meta name="theme-color" content="#F7F5F2">
+  <meta name="theme-color" content="#1A1612">
 
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="150x150" href="assets/img/logo.png">
-  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
@@ -30,13 +30,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fontes carregadas sem bloquear a renderização (display=swap) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..500;1,300..500&family=Jost:wght@300..500&family=Roboto+Mono&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..500;1,300..500&family=Jost:wght@300..500&family=Roboto+Mono&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..500;1,300..500&family=Jost:wght@300..500&family=Roboto+Mono&display=swap"></noscript>
-  <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..500;1,400..500&amp;family=Jost:wght@300..500&amp;family=Roboto+Mono&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..500;1,400..500&amp;family=Jost:wght@300..500&amp;family=Roboto+Mono&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..500;1,400..500&amp;family=Jost:wght@300..500&amp;family=Roboto+Mono&amp;display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    // JS ativo + loader do monograma só na primeira visita da sessão
+    (function (d) {
+      d.classList.add('js');
+      try {
+        if (!sessionStorage.getItem('ss_intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          d.classList.add('intro');
+          sessionStorage.setItem('ss_intro', '1');
+        }
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
   <script src="assets/js/main.js" defer></script>
 
   <!-- schema.org não tem um tipo "ArchitecturalService": ProfessionalService é o subtipo de LocalBusiness que se aplica -->
@@ -88,13 +98,38 @@
   <!-- TODO: confirmar o horário de abertura (08:00 acima e BUSINESS_HOURS.open no main.js) -->
 </head>
 <body>
+  <!-- Sprite: monograma "S | S" vetorizado do logo, "S" isolado e ícone do WhatsApp.
+       A barra do monograma é um traço de 1px (vector-effect), igual ao divisor e à linha do processo. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ss-mono" viewBox="0 0 82.8 33">
+      <path stroke="none" d="M1.49 31.89C0.99 29.19 1.01 26.27 1.45 23.56C2.5 25.2 3.21 27.09 4.48 28.58C6.9 31.42 10.78 32.19 14.33 31.62C16.37 31.3 19.58 30.05 19.92 27.69C20.32 24.93 16.39 22.58 14.3 21.57C9.66 19.31 3.55 18.1 1.16 12.94C0.52 11.56 0.25 10.05 0.43 8.54C0.56 7.5 0.88 6.48 1.38 5.56C3.76 1.19 9.49 -0.25 14.12 0.45C17.53 0.97 19.01 2.84 22.36 0.73C23.03 3.49 23.03 6.56 22.43 9.34C21.77 8.11 21.19 6.78 20.31 5.65C17.91 2.53 13.74 1.1 9.91 1.53C7.92 1.76 4.05 3.16 3.83 5.53C3.59 8.04 8.19 9.82 10.02 10.72C14.27 12.81 19.2 14.81 22.02 18.83C22.61 19.67 23.08 20.58 23.35 21.57C24.99 27.55 19.84 31.7 14.46 32.52C12.42 32.83 10.23 32.81 8.22 32.34C5.42 31.68 4.39 30.41 1.49 31.89Z"/>
+      <path stroke="none" d="M60.31 31.89C59.81 29.19 59.83 26.27 60.27 23.56C61.32 25.2 62.03 27.09 63.3 28.58C65.72 31.42 69.6 32.19 73.15 31.62C75.19 31.3 78.4 30.05 78.74 27.69C79.14 24.93 75.21 22.58 73.12 21.57C68.48 19.31 62.37 18.1 59.98 12.94C59.34 11.56 59.07 10.05 59.25 8.54C59.38 7.5 59.7 6.48 60.2 5.56C62.58 1.19 68.31 -0.25 72.94 0.45C76.35 0.97 77.83 2.84 81.18 0.73C81.85 3.49 81.85 6.56 81.25 9.34C80.59 8.11 80.01 6.78 79.13 5.65C76.73 2.53 72.56 1.1 68.73 1.53C66.74 1.76 62.87 3.16 62.65 5.53C62.41 8.04 67.01 9.82 68.84 10.72C73.09 12.81 78.02 14.81 80.84 18.83C81.43 19.67 81.9 20.58 82.17 21.57C83.81 27.55 78.66 31.7 73.28 32.52C71.24 32.83 69.05 32.81 67.04 32.34C64.24 31.68 63.21 30.41 60.31 31.89Z"/>
+      <line x1="42.84" y1="4.7" x2="42.84" y2="28.27" fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/>
+    </symbol>
+    <symbol id="ss-s" viewBox="0 -0.5 25.5 33.6">
+      <path d="M1.49 31.89C0.99 29.19 1.01 26.27 1.45 23.56C2.5 25.2 3.21 27.09 4.48 28.58C6.9 31.42 10.78 32.19 14.33 31.62C16.37 31.3 19.58 30.05 19.92 27.69C20.32 24.93 16.39 22.58 14.3 21.57C9.66 19.31 3.55 18.1 1.16 12.94C0.52 11.56 0.25 10.05 0.43 8.54C0.56 7.5 0.88 6.48 1.38 5.56C3.76 1.19 9.49 -0.25 14.12 0.45C17.53 0.97 19.01 2.84 22.36 0.73C23.03 3.49 23.03 6.56 22.43 9.34C21.77 8.11 21.19 6.78 20.31 5.65C17.91 2.53 13.74 1.1 9.91 1.53C7.92 1.76 4.05 3.16 3.83 5.53C3.59 8.04 8.19 9.82 10.02 10.72C14.27 12.81 19.2 14.81 22.02 18.83C22.61 19.67 23.08 20.58 23.35 21.57C24.99 27.55 19.84 31.7 14.46 32.52C12.42 32.83 10.23 32.81 8.22 32.34C5.42 31.68 4.39 30.41 1.49 31.89Z"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </symbol>
+  </svg>
+
+  <!-- Loader: aparece só na primeira visita da sessão e some sozinho (600ms) -->
+  <div class="loader" aria-hidden="true">
+    <svg class="mono" viewBox="0 0 82.8 33"><use href="#ss-mono"></use></svg>
+  </div>
+
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ================= Header ================= -->
   <header class="header" data-header>
     <div class="header__inner wrap">
-      <a class="header__logo" href="#inicio">
-        <img src="assets/img/logo.png" alt="Sá | Spessatto Arquitetura e Interiores, voltar ao início" width="48" height="48">
+      <a class="brand" href="#inicio">
+        <svg class="mono brand__mono" viewBox="0 0 82.8 33" aria-hidden="true"><use href="#ss-mono"></use></svg>
+        <span class="brand__text">
+          <span class="brand__name">Sá | Spessatto</span>
+          <span class="brand__sub">arquitetura e interiores</span>
+        </span>
       </a>
 
       <nav class="nav" id="menu" aria-label="Principal" data-nav>
@@ -114,7 +149,7 @@
 
       <a class="header__cta" href="#contato" data-wa="header">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-        <span>Falar no WhatsApp</span>
+        <span>WhatsApp</span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
@@ -129,36 +164,38 @@
     <!-- ================= Hero ================= -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero__media">
-        <img src="assets/img/hero.jpg" alt="Sala de estar de um projeto residencial do escritório, com luz natural e marcenaria sob medida" width="2400" height="1600" fetchpriority="high" decoding="async">
+        <!-- TODO: salvar a foto do hero em assets/img/hero.jpg (3:2, mínimo 2400 × 1600).
+             Enquanto o arquivo não existir, a imagem some e fica o fundo escuro com grão. -->
+        <img src="assets/img/hero.jpg" alt="Sala de estar de um projeto residencial do escritório, com luz natural e marcenaria sob medida" width="2400" height="1600" fetchpriority="high" decoding="async" onerror="this.remove()">
       </div>
+      <div class="hero__veil" aria-hidden="true"></div>
 
-      <div class="hero__content wrap">
-        <p class="hero__kicker">arquitetura e interiores <i class="bar" aria-hidden="true"></i> goiânia</p>
-        <h1 class="hero__title" id="hero-title">Todo ambiente <br>é um <em>mundo</em>.</h1>
-        <div class="hero__side">
-          <p class="hero__lead">Projetamos lares que acolhem, marcas que comunicam e incorporações que deixam legado, do conceito à ocupação.</p>
+      <div class="hero__inner wrap">
+        <div class="hero__content">
+          <!-- TODO: quando confirmar o ano de fundação, pode virar "Goiânia — Setor Bueno — desde AAAA" -->
+          <p class="hero__eyebrow">Goiânia — Setor Bueno</p>
+          <h1 class="hero__title" id="hero-title"><span class="hero__line">Todo ambiente</span> <span class="hero__line">é um <em>mundo</em>.</span></h1>
+          <p class="hero__support">Arquitetura e interiores residenciais, corporativos e comerciais.</p>
+          <p class="hero__lead">Lares que acolhem, marcas que comunicam e incorporações que deixam legado, do conceito à ocupação.</p>
           <div class="hero__actions">
             <a class="btn btn--light" href="#contato" data-wa="hero" data-wa-text="Olá! Vim pelo site e quero iniciar um projeto com o escritório.">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
               Iniciar meu projeto
             </a>
-            <a class="link link--light" href="#projetos">Ver projetos</a>
+            <a class="btn btn--ghost" href="#projetos">Ver projetos</a>
           </div>
+          <p class="hero__proof">
+            <a href="https://www.google.com/search?q=saspessattoarquitetura" target="_blank" rel="noopener">4,9 no Google</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.instagram.com/saspessattoarquitetura/" target="_blank" rel="noopener">25 mil no Instagram</a>
+          </p>
         </div>
-      </div>
-
-      <div class="hero__proof wrap">
-        <ul>
-          <li><a href="https://www.google.com/search?q=saspessattoarquitetura" target="_blank" rel="noopener"><strong>4,9</strong> no Google</a></li>
-          <li><a href="https://www.instagram.com/saspessattoarquitetura/" target="_blank" rel="noopener"><strong>25 mil</strong> no Instagram</a></li>
-          <!-- TODO: confirmar o ano de fundação e trocar por: <strong>Goiânia</strong>, desde AAAA -->
-          <li><strong>Goiânia</strong> Setor Bueno</li>
-        </ul>
       </div>
     </section>
 
     <!-- ================= 01 Manifesto ================= -->
-    <section class="manifesto" id="sobre" aria-labelledby="sobre-title">
+    <section class="manifesto has-ring" id="sobre" aria-labelledby="sobre-title">
+      <span class="ring" aria-hidden="true" data-reveal></span>
       <span class="vline" aria-hidden="true" data-reveal></span>
       <div class="wrap manifesto__grid">
         <p class="label manifesto__label"><span class="label__n">01</span>sobre</p>
@@ -312,7 +349,8 @@
     </section>
 
     <!-- ================= 03 Escritório e sócias ================= -->
-    <section class="studio" id="escritorio" aria-labelledby="escritorio-title">
+    <section class="studio has-ring" id="escritorio" aria-labelledby="escritorio-title">
+      <span class="ring" aria-hidden="true" data-reveal></span>
       <div class="wrap">
         <header class="studio__head">
           <p class="label"><span class="label__n">03</span>escritório</p>
@@ -479,7 +517,9 @@
     </section>
 
     <!-- ================= 07 Contato ================= -->
-    <section class="contact" id="contato" aria-labelledby="contato-title">
+    <section class="contact has-ring" id="contato" aria-labelledby="contato-title">
+      <span class="ring ring--light" aria-hidden="true" data-reveal></span>
+      <svg class="watermark" viewBox="0 -0.5 25.5 33.6" aria-hidden="true"><use href="#ss-s"></use></svg>
       <span class="vline vline--light" aria-hidden="true" data-reveal></span>
       <div class="wrap contact__grid">
         <header class="contact__head">
@@ -591,34 +631,38 @@
 
   <!-- ================= Footer ================= -->
   <footer class="footer">
-    <div class="wrap footer__grid">
-      <a class="footer__logo" href="#inicio">
-        <img src="assets/img/logo.png" alt="Sá | Spessatto Arquitetura e Interiores" width="72" height="72" loading="lazy">
+    <div class="wrap">
+      <a class="footer__mark" href="#inicio" aria-label="Sá | Spessatto Arquitetura e Interiores, voltar ao início">
+        <svg class="mono" viewBox="0 0 82.8 33" aria-hidden="true"><use href="#ss-mono"></use></svg>
       </a>
-      <p class="footer__claim">Arquitetura e interiores, <br>do conceito à ocupação.</p>
-      <div class="footer__col">
-        <p class="footer__label">endereço</p>
-        <address>Av. T-2, 471, salas 1511 e 1512<br>Focus Business Center<br>Setor Bueno, Goiânia, GO<br>74215-025</address>
+      <p class="footer__claim">Arquitetura e interiores, do conceito à ocupação.</p>
+
+      <div class="footer__grid">
+        <div class="footer__col">
+          <p class="footer__label">endereço</p>
+          <address>Av. T-2, 471, salas 1511 e 1512<br>Focus Business Center<br>Setor Bueno, Goiânia, GO<br>74215-025</address>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">contato</p>
+          <ul>
+            <li><a href="tel:+556231001984">(62) 3100-1984</a></li>
+            <li><a href="#contato" data-wa="footer">WhatsApp</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">redes</p>
+          <ul>
+            <li><a href="https://www.instagram.com/saspessattoarquitetura/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.youtube.com/channel/UC-qVIoz7-3_8wvqXC-e0q2g" target="_blank" rel="noopener">YouTube</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__col">
-        <p class="footer__label">contato</p>
-        <ul>
-          <li><a href="tel:+556231001984">(62) 3100-1984</a></li>
-          <li><a href="#contato" data-wa="footer">WhatsApp</a></li>
-        </ul>
+
+      <div class="footer__base">
+        <p>© <span data-year>2026</span> Sá | Spessatto Arquitetura e Interiores</p>
+        <!-- Crédito opcional: apague a linha abaixo se não quiser exibir -->
+        <p class="footer__credit">Site por Acro Web Design</p>
       </div>
-      <div class="footer__col">
-        <p class="footer__label">redes</p>
-        <ul>
-          <li><a href="https://www.instagram.com/saspessattoarquitetura/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.youtube.com/channel/UC-qVIoz7-3_8wvqXC-e0q2g" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap footer__base">
-      <p>© <span data-year>2026</span> Sá | Spessatto Arquitetura e Interiores</p>
-      <!-- Crédito opcional: apague a linha abaixo se não quiser exibir -->
-      <p class="footer__credit">Site por Acro Web Design</p>
     </div>
   </footer>
 
@@ -647,7 +691,7 @@
   <div class="wa" data-wa-widget>
     <div class="wa__panel" id="wa-panel" role="dialog" aria-labelledby="wa-title" data-wa-panel>
       <div class="wa__head">
-        <img src="assets/img/logo.png" alt="" width="40" height="40" loading="lazy">
+        <span class="wa__avatar" aria-hidden="true"><svg class="mono" viewBox="0 0 82.8 33" aria-hidden="true"><use href="#ss-mono"></use></svg></span>
         <div>
           <p class="wa__name" id="wa-title">Sá | Spessatto</p>
           <p class="wa__status" data-wa-status-wrap><span class="wa__dot" aria-hidden="true"></span><span data-wa-status>responde em horário comercial</span></p>
@@ -678,11 +722,5 @@
     </button>
   </div>
 
-  <!-- Ícone oficial do WhatsApp (usado via <use>) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-whatsapp" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-    </symbol>
-  </svg>
 </body>
 </html>

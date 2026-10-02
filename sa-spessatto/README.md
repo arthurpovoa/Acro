@@ -9,7 +9,7 @@ sa-spessatto/
 └── assets/
     ├── css/style.css
     ├── js/main.js
-    └── img/          logo, favicon e os slots de foto
+    └── img/          monograma em SVG, favicon, ícones e os slots de foto
 ```
 
 Para testar localmente, sirva a pasta com qualquer servidor estático (por exemplo `npx serve sa-spessatto` ou `python3 -m http.server` dentro da pasta) e abra no navegador. Para publicar, suba a pasta inteira para a hospedagem.
@@ -45,7 +45,7 @@ Todos os arquivos atuais em `assets/img/` são **placeholders** cor de areia, co
 
 | Arquivo | Proporção | Tamanho sugerido | Onde aparece | Sugestão de foto |
 |---|---|---|---|---|
-| `hero.jpg` | 3:2 horizontal | 2400 × 1600 | Fundo do topo, tela cheia | Melhor foto de obra, ambiente amplo e com luz. O texto fica sobre o terço inferior esquerdo, então evite detalhes importantes ali |
+| `hero.jpg` | 3:2 horizontal | 2400 × 1600 | Fundo do topo, tela cheia, atrás do texto | **Não vem incluída de propósito.** Enquanto o arquivo não existir, o topo mostra um fundo escuro com grão sutil (sem ícone quebrado). Use a melhor foto de obra, ambiente amplo e com luz. O texto fica no terço inferior esquerdo, sobre um véu escuro; o lado direito da foto fica livre |
 | `manifesto.jpg` | 2:3 vertical | 1200 × 1800 | Ao lado do manifesto | Detalhe: marcenaria, textura, encontro de materiais |
 | `residencial-01.jpg` | 4:3 | 2000 × 1500 | Projetos, 1º item (grande) | Residencial |
 | `office-01.jpg` | 4:5 vertical | 1200 × 1500 | Projetos, 2º item | Corporativo / clínica |
@@ -59,8 +59,10 @@ Todos os arquivos atuais em `assets/img/` são **placeholders** cor de areia, co
 | `naira-sa.jpg` | 4:5 vertical | 1200 × 1500 | Escritório | Retrato da Náira (mesma luz e enquadramento do retrato da Andréia) |
 | `instagram-01.jpg` a `instagram-04.jpg` | 4:5 vertical | 1080 × 1350 | Bloco do Instagram | Quatro posts recentes do perfil |
 | `video-capa.jpg` | 16:9 | 1920 × 1080 | Capa do vídeo (antes do clique) | Capa do YouTube: baixe `https://i.ytimg.com/vi/qAH6bfe7d_4/maxresdefault.jpg` e salve com esse nome |
-| `og-image.jpg` | 1200 × 630 | 1200 × 630 | Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) | Já vem pronta, com logo e nome. Pode trocar por uma foto com o logo aplicado |
-| `logo.png`, `favicon-32.png` | 1:1 | 150 × 150 / 32 × 32 | Header, rodapé, painel, favicon | Logo enviado. Não trocar, a não ser por uma versão maior do mesmo arquivo |
+| `og-image.jpg` | 1200 × 630 | 1200 × 630 | Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) | Já vem pronta: fundo escuro, monograma no fio circular e nome. Pode trocar por uma foto com o monograma aplicado |
+| `monograma-dourado.svg`, `monograma-champanhe.svg` | SVG | vetor | Arquivos do monograma para uso fora do site (papelaria, apresentações) | Vetorizados do logo enviado. Dourado (#A37210) para fundo claro, champanhe (#D9BE84) para fundo escuro |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | 1:1 | vetor / 32 / 180 | Aba do navegador e atalho no celular | Gerados a partir do monograma. O SVG troca para champanhe quando o navegador está no tema escuro |
+| `logo.png` | 1:1 | 150 × 150 | Só no JSON-LD (dados para o Google) | Logo original enviado, mantido como referência |
 
 **Depois de trocar a foto, atualize o `alt`** da `<img>` correspondente no `index.html` para descrever o que aparece de fato (ex.: "Cozinha integrada com ilha em pedra no Apartamento X").
 
@@ -72,7 +74,44 @@ Todos os arquivos atuais em `assets/img/` são **placeholders** cor de areia, co
 
 ---
 
-## 3. Projetos
+### Para colocar a foto do hero
+
+1. Salve a foto como `assets/img/hero.jpg` (JPG progressivo, até ~350 KB).
+2. Ajuste o `alt` da imagem no `index.html` (procure o comentário `TODO: salvar a foto do hero`).
+3. Para mudar o enquadramento, use `.hero { --hero-focus: 60% 50%; }` no `style.css` (horizontal, vertical).
+
+O véu escuro foi calibrado medindo o contraste com uma foto **toda branca** (pior caso) em 360, 390, 768, 1280 e 1920px: todo texto do hero e do header fica acima de 4,5:1 (títulos grandes acima de 3:1), então qualquer foto funciona sem perder leitura.
+
+---
+
+## 3. Identidade visual
+
+**Monograma.** O "S | S" foi vetorizado a partir do logo enviado: os dois "S" foram traçados, redesenhados com curvas limpas e conferidos por sobreposição com o original. Sem o círculo creme chapado. Ele está embutido no `index.html` como `<symbol id="ss-mono">` e herda a cor do texto ao redor: champanhe sobre o hero e dourado (#A37210) no header creme, com a troca suave ao rolar.
+
+**O logo como vocabulário gráfico:**
+
+| Motivo | Onde aparece |
+|---|---|
+| Fio circular (1px, dourado a 25%) | Atrás dos títulos do manifesto, do escritório e do contato; em volta do monograma no rodapé e no painel do WhatsApp; no favicon |
+| Barra vertical "\|" (1px) | No monograma, no divisor vertical entre seções, na linha do processo e nos rótulos "01 \| sobre". Mesma espessura e cor em todos |
+| "S" gigante (marca d'água a 7%) | Seção escura de contato e imagem de compartilhamento |
+| Monograma | Header, loader inicial (só na primeira visita da sessão, some em 600ms), painel do WhatsApp, rodapé e favicon |
+
+**Paleta** (variáveis no topo do `style.css`):
+
+| Cor | Uso |
+|---|---|
+| `#1A1612` escuro quente | Fundo do hero sem foto, contato, lightbox, cabeçalho do painel; texto corrido |
+| `#D9BE84` champanhe | Destaques, linhas e monograma sobre escuro (10:1 no fundo escuro) |
+| `#A37210` dourado da marca | Linhas, monograma e títulos grandes, só sobre claro |
+| `#7A540B` dourado escuro | Texto pequeno dourado sobre claro (rótulos), para manter 4,5:1 |
+| `#F7F5F2` creme e `#E9E3D8` areia | Fundos claros |
+
+**Tipografia:** títulos em Playfair Display 400 e 500 (Didone de alto contraste, a mais próxima da serifa do monograma entre as opções pedidas), texto em Jost e rótulos em Roboto Mono.
+
+---
+
+## 4. Projetos
 
 Cada projeto é um bloco `<article class="project">` dentro de `[data-projects]` no `index.html`:
 
@@ -86,7 +125,7 @@ A grade assimétrica segue a ordem dos projetos visíveis (ciclo de 8 posições
 
 ---
 
-## 4. Analytics
+## 5. Analytics
 
 No topo do `main.js`:
 
@@ -110,29 +149,30 @@ No GA4, marque `generate_lead` e `whatsapp_click` como **eventos-chave** (conver
 
 ---
 
-## 5. Depoimentos
+## 6. Depoimentos
 
 Na seção de avaliações há um bloco de depoimentos **comentado e vazio**. Para publicar, descomente e repita o `<figure>` para cada depoimento, sempre com texto real e autorização do cliente. O estilo já está pronto no CSS.
 
 ---
 
-## 6. Pendências antes de publicar
+## 7. Pendências antes de publicar
 
-- [ ] **Ano de fundação**: há um `TODO` no hero. Quando confirmar, troque "Goiânia Setor Bueno" por "Goiânia, desde AAAA". Listagens de terceiros citam 2011, mas isso não foi confirmado com o escritório.
+- [ ] **Foto do hero**: salvar `assets/img/hero.jpg` (seção 2). Até lá, o topo usa o fundo escuro com grão e o navegador registra um 404 para esse arquivo.
+- [ ] **Ano de fundação**: há um `TODO` no hero. Quando confirmar, o eyebrow pode virar "Goiânia — Setor Bueno — desde AAAA". Listagens de terceiros citam 2011, mas isso não foi confirmado com o escritório.
 - [ ] **Horário de abertura**: o site sabe que fecha às 18h. A abertura às 8h é suposição (`BUSINESS_HOURS.open` e JSON-LD).
 - [ ] **Domínio**: `canonical`, `og:url`, `og:image` e o JSON-LD usam `https://saspessatto.com/`. Confirme o domínio final.
 - [ ] **Fotos e alts**: substituir os placeholders (seção 2) e revisar os `alt`.
-- [ ] **Projetos**: nomes reais, local e metragem (seção 3).
+- [ ] **Projetos**: nomes reais, local e metragem (seção 4).
 - [ ] **Crédito no rodapé**: "Site por Acro Web Design" é opcional. Apague a linha se não quiser.
 
 ---
 
-## 7. Notas técnicas
+## 8. Notas técnicas
 
 - **Correções em relação ao site anterior:** a viewport não bloqueia o zoom (sem `maximum-scale`). Há um único `h1` e nenhum `id` duplicado. O texto corrido usa o tom escuro (contraste acima de 4,5:1), sem dourado sobre creme. O texto é alinhado à esquerda, sem justificar. O link "food" não fica mais morto, e não há jQuery, WPBakery nem Revolution Slider.
 - **Dados estruturados:** o schema.org não tem um tipo "ArchitecturalService". Por isso o JSON-LD usa `ProfessionalService` (subtipo de `LocalBusiness`) com nota 4,9 / 11 avaliações, sem nenhuma avaliação inventada. O Google costuma não exibir estrelas para notas publicadas pelo próprio negócio, mas os dados continuam válidos.
-- **Fontes:** Cormorant Garamond (títulos), Jost (texto) e Roboto Mono (rótulos), via Google Fonts com `display=swap`, carregadas sem bloquear a renderização.
+- **Fontes:** Playfair Display (títulos), Jost (texto) e Roboto Mono (rótulos), via Google Fonts com `display=swap`, carregadas sem bloquear a renderização.
 - **Vídeo:** o player do YouTube (`youtube-nocookie.com`) só carrega depois do clique.
 - **Painel flutuante:** abre sozinho uma vez por sessão (25 s ou 50% de rolagem). Não abre com o menu aberto, com a galeria aberta, com alguém digitando ou com o formulário de contato na tela. O botão se recolhe quando o formulário aparece, para não cobrir os campos.
 - **Movimento:** com `prefers-reduced-motion`, as animações e o zoom do hero ficam desligados e todo o conteúdo aparece direto.
-- **Medição local (Lighthouse 12, com placeholders):** celular com Performance 100, Acessibilidade 100, Boas práticas 96 e SEO 100. Os 96 vêm só da falha de certificado do Google Fonts no ambiente de teste. Com as fotos reais o peso aumenta, por isso vale seguir os limites da seção 2.
+- **Medição local (Lighthouse 12, com placeholders):** celular e desktop com Performance 100, Acessibilidade 100, Boas práticas 96 e SEO 100. Os 96 vêm da falha de certificado do Google Fonts no ambiente de teste e do 404 do `hero.jpg`, que ainda não existe. Com as fotos reais o peso aumenta, por isso vale seguir os limites da seção 2.
